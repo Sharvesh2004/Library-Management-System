@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Circulation Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Book Circulation Dashboard</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <h2 class="mb-3">Issued Books</h2>
+        {% if issued_books %}
+            <div class="list-group mb-4">
+            {% for reservation in issued_books %}
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ reservation.book.title }}</h5>
+                        <small>Issued to: {{ reservation.user.username }}</small>
+                    </div>
+                    <p class="mb-1">by {{ reservation.book.author }}</p>
+                    <small>Issued on: {{ reservation.date_reserved.strftime('%Y-%m-%d') }}</small>
+                    <br>
+                    <small>Due on: {{ reservation.due_date.strftime('%Y-%m-%d') }}</small>
+                    {% if reservation.due_date < datetime.utcnow() %}
+                        <span class="badge badge-danger ml-2">OVERDUE</span>
+                    {% endif %}
+                    <form action="{{ url_for('return_book', reservation_id=reservation.id) }}" method="post" class="mt-2">
+                        <button type="submit" class="btn btn-primary btn-sm">Return Book</button>
+                    </form>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p class="alert alert-info">No books are currently issued.</p>
+        {% endif %}
+
+        <h2 class="mb-3">Returned Books</h2>
+        {% if returned_books %}
+            <div class="list-group">
+            {% for reservation in returned_books %}
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ reservation.book.title }}</h5>
+                        <small>Returned by: {{ reservation.user.username }}</small>
+                    </div>
+                    <p class="mb-1">by {{ reservation.book.author }}</p>
+                    <small>Returned on: {{ reservation.date_returned.strftime('%Y-%m-%d') }}</small>
+                    {% if reservation.fine_amount > 0 %}
+                        <span class="badge badge-danger ml-2">Fine: ${{ "%.2f"|format(reservation.fine_amount) }}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p class="alert alert-info">No books have been returned yet.</p>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

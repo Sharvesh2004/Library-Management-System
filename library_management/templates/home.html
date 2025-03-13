@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Library Management System{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to the Library Management System</h1>
+    <p class="lead">Explore our vast collection of books and manage your reading journey.</p>
+    <hr class="my-4">
+    <p>Search for books, manage reservations, and more.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('search') }}" role="button">Search Books</a>
+</div>
+
+{% if current_user.is_authenticated %}
+    {% if current_user.is_admin %}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Admin Quick Links</h5>
+                <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Admin Dashboard</a>
+                <a href="{{ url_for('add_book') }}" class="btn btn-secondary">Add New Book</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">User Quick Links</h5>
+                <a href="{{ url_for('my_reservations') }}" class="btn btn-secondary">My Reservations</a>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,116 @@
+/* Existing styles with color enhancements */
+.jumbotron {
+    background: linear-gradient(to right, #e9ecef, #d1d8e0);
+    border-radius: .3rem;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: white;
+}
+
+body {
+    background-color: #f0f4f8;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    background: linear-gradient(to right, #2c3e50, #3498db);
+    padding: 1rem;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: white !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color:#ffd966  !important;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #2980b9, #2c3e50);
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #c1e4e4;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(3, 141, 226, 0.15);
+}
+
+.alert {
+    border-radius: 0;
+    border-left: 5px solid;
+}
+
+.alert-success {
+    border-left-color: #2ecc71;
+    background-color: #d5f5e3;
+}
+
+.alert-danger {
+    border-left-color: #e74c3c;
+    background-color: #fadbd8;
+}
+
+.alert-warning {
+    border-left-color: #f39c12;
+    background-color: #fdebd0;
+}
+
+.alert-info {
+    border-left-color: #3498db;
+    background-color: #d6eaf8;
+}
+
+/* Add a subtle animation to the navbar brand */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.navbar-brand:hover {
+    animation: pulse 1s infinite;
+}
+
+/* New styles for admin dashboard cards */
+.card-stats {
+    border-left: 5px solid #3498db;
+}
+
+.card-action:nth-child(1) {
+    border-top: 4px solid #e74c3c;
+}
+
+.card-action:nth-child(2) {
+    border-top: 4px solid #f39c12;
+}
+
+.card-action:nth-child(3) {
+    border-top: 4px solid #2ecc71;
+}
+
+.card-action:nth-child(4) {
+    border-top: 4px solid #9b59b6;
+}
