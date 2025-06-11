@@ -31,7 +31,7 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-    color:#ffd966  !important;
+    color: #ffd966 !important;
 }
 
 .btn-primary {
@@ -113,4 +113,49 @@ body {
 
 .card-action:nth-child(4) {
     border-top: 4px solid #9b59b6;
+}
+
+/* Additional styles for payment form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+.payment-form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.payment-form button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.payment-form button[type="submit"]:hover {
+    background-color: #2980b9;
 }

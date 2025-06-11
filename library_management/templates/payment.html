@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="payment-form">
+            <h1>Payment Form</h1>
+            <form action="/simulate_payment" method="POST">
+                <div class="form-group">
+                    <label for="card_number">Card Number:</label>
+                    <input type="text" name="card_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiration_date">Expiration Date (MM/YYYY):</label>
+                    <input type="text" name="expiration_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" name="cvv" required>
+                </div>
+                <button type="submit">Pay Now</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
