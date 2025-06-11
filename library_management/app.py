@@ -7,8 +7,8 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate
 from flask_apscheduler import APScheduler
-from .models import User, Book, Reservation
-from .database import db
+from models import User, Book, Reservation
+from database import db
 
 # Initialize Flask app
 app = Flask(__name__)
